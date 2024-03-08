@@ -23,5 +23,28 @@ $ flask load-data titanic-min.csv
 
 $ export FLASK_APP=app.py
 
-
 flask run --host=0.0.0.0 --port=31201
+
+#Changement du Docker file
+
+#Build image
+docker build -t flask-pandas .
+
+#Push image on docker hub
+docker login -u enzolivecampus
+
+docker image tag pandas-flask:latest enzolivecampus/pandas-flask:latest
+
+docker push enzolivecampus/pandas-flask:latest
+
+#Run image flask-pandas
+
+docker run -p 31201:31201  pandas-flask:latest
+
+
+
+
+
+
+
+
