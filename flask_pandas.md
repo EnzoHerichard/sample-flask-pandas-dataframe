@@ -39,7 +39,8 @@ docker push enzolivecampus/pandas-flask:latest
 
 #Run image flask-pandas
 
-docker run -p 31201:31201  pandas-flask:latest
+docker run -d --name pandas-flask -p 31201:31201 pandas-flask
+
 
 
 
