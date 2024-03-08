@@ -1,23 +1,23 @@
-$ git clone https://github.com/app-generator/flask-pandas-dataframe.git
-$ cd flask-pandas-dataframe
+git clone https://github.com/app-generator/flask-pandas-dataframe.git
+cd flask-pandas-dataframe
 
 sudo apt install python3-virtualenv
-$ # Virtualenv modules installation (Unix based systems)
-$ virtualenv env
-$ source env/bin/activate
-$
-$ # Virtualenv modules installation (Windows based systems)
-$ # virtualenv env
-$ # .\env\Scripts\activate
-$
-$ # Install dependencies
-$ pip3 install -r requirements.txt
-$
-$ # Create database via Flask CLI
-$ flask shell
->>> from app import db  # import SqlAlchemy interface
->>> db.create_all()     # create SQLite database and Data table
->>> quit()              # leave the Flask CLI  
+ # Virtualenv modules installation (Unix based systems)
+ virtualenv env 
+
+ source env/bin/activate 
+ # Virtualenv modules installation (Windows based systems)
+ # virtualenv env
+ # .\env\Scripts\activate
+
+ # Install dependencies
+ pip3 install -r requirements.txt
+
+ # Create database via Flask CLI
+ flask shell
+>>> from app import db
+>>> db.create_all()  
+>>> quit()            
 
 $ flask load-data titanic-min.csv
 
@@ -41,7 +41,24 @@ docker push enzolivecampus/pandas-flask:latest
 
 docker run -d --name pandas-flask -p 31201:31201 pandas-flask
 
+#Jenkins sur goland
 
+Connexion à jenkins avec mes identifiants
+
+#Création d'une nouvelle pipeline 
+
+Création du job falsk-pandas-docker
+
+Mettre dans le script shell :
+
+echo '
+#docker build -t pandas-flask .
+#docker run -d --name pandas-flask -p 31201:31201 pandas-flask
+
+#docker login -u enzolivecampus
+#docker image tag pandas-flask:latest enzolivecampus/pandas-flask:latest
+#docker push enzolivecampus/pandas-flask:latest
+'
 
 
 
