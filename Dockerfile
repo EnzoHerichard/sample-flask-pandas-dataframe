@@ -1,11 +1,13 @@
+FROM python:3.8-slim-buster
 
-FROM ubuntu:20.04
+WORKDIR /app
 
-RUN apt-get update && \
-    apt-get -y install python3 python3-pip vim
+COPY . /app
 
-RUN pip3 install flask
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app.py /opt/app.py
+ENV FLASK_APP=app.py
 
-ENTRYPOINT ["flask", "run", "--host=0.0.0.0"]
+ENV FLASK_ENV=development
+
+CMD ["flask", "run", "--host=0.0.0.0", "--port=31201"]
